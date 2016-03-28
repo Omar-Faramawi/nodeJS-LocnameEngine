@@ -1,0 +1,2 @@
+C:\Users\mas\Documents\Visual Studio 2013\Projects\typescript_express\typescript_express\obj\Debug\typescript_express.njsprojResolveAssemblyReference.cache
+C:\Users\mas\Documents\Visual Studio 2013\Projects\typescript_express\typescript_express\bin\Microsoft.NodejsTools.WebRole.dll

@@ -1,0 +1,22 @@
+{
+  "name": "locname_engine",
+  "version": "0.0.0",
+  "description": "Locname Engine",
+  "main": "app.js",
+  "author": {
+    "name": "mas",
+    "email": ""
+  },
+  "dependencies": {
+    "algoliasearch": "^3.6.0",
+    "async": "^0.9.0",
+    "ejs": "^2.3.1",
+    "express": "^3.4.4",
+    "google-places": "0.0.2",
+    "googlemaps": "^0.1.20",
+    "jade": "*",
+    "mongoose": "~4.0.1",
+    "node-geocoder": "^2.20.0",
+    "stylus": "*"
+  }
+}

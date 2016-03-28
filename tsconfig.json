@@ -1,0 +1,53 @@
+{
+    "version": "1.5.0-alpha",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./Engine/Geocoding/Geocoder/Geocoder.ts",
+        "./Engine/Geocoding/Interfaces/ISource.ts",
+        "./Engine/Geocoding/Interfaces/ISourceMapper.ts",
+        "./Engine/Geocoding/Sources/EdittedLocationSource.ts",
+        "./Engine/Geocoding/Sources/GoogleMapSourceMapper.ts",
+        "./Engine/Geocoding/Sources/GoogleMapsSource.ts",
+        "./Engine/Geocoding/Sources/GooglePlaceSource.ts",
+        "./Engine/Geocoding/Sources/LocalSource.ts",
+        "./Engine/Geocoding/Sources/OpenStreetMapper.ts",
+        "./Engine/Geocoding/Sources/OpenStreetSource.ts",
+        "./Engine/Geocoding/Sources/WikimapiaSource.ts",
+        "./Engine/Geocoding/Sources/WikimapiaSourceMapper.ts",
+        "./Engine/Models/CacheManager.ts",
+        "./Engine/Models/Geometry.ts",
+        "./Engine/Models/Location.ts",
+        "./Engine/Models/LocationManager.ts",
+        "./Engine/Models/QueryManager.ts",
+        "./Scripts/async.d.ts",
+        "./Scripts/googlemaps.d.ts",
+        "./Scripts/mongoose.d.ts",
+        "./Scripts/typings/express/express.d.ts",
+        "./Scripts/typings/mocha/mocha.d.ts",
+        "./Scripts/typings/node/node.d.ts",
+        "./Scripts/typings/stylus/stylus.d.ts",
+        "./app.ts",
+        "./models/Locations.ts",
+        "./models/Query.ts",
+        "./models/SourceData.ts",
+        "./models/User.ts",
+        "./routes/index.ts",
+        "./test/GeocoderUnitTest.ts",
+        "./test/GoogleMapUnitTest.ts",
+        "./test/UnitTest1.ts",
+        "./views/jQuery-Autocomplete-master/src/jquery.autocomplete.d.ts"
+    ]
+}

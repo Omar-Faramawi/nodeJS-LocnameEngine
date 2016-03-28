@@ -1,0 +1,14 @@
+F:\work\locname-engine\locnameengine\visual_studio\typescript_express\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\mas\Documents\Repos\locnameEngine\visual_studio\typescript_express\obj\Debug\LocnameEngine.njsprojResolveAssemblyReference.cache
+C:\Users\mas\Documents\Repos\locnameEngine\visual_studio\typescript_express\bin\Microsoft.NodejsTools.WebRole.dll
+F:\work\locnameEngine\visual_studio\typescript_express\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\Mourad\Documents\LocName\LastWork\locnameenginegit\visual_studio\typescript_express\obj\Debug\LocnameEngine.njsprojResolveAssemblyReference.cache
+C:\Users\Mourad\Documents\LocName\LastWork\locnameenginegit\visual_studio\typescript_express\bin\Microsoft.NodejsTools.WebRole.dll
+F:\WORK\new\locnameenginegit\visual_studio\typescript_express\obj\Debug\LocnameEngine.njsprojResolveAssemblyReference.cache
+F:\WORK\new\locnameenginegit\visual_studio\typescript_express\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\Mourad\Documents\LocName\Engine\locnameenginegit\visual_studio\typescript_express\obj\Debug\LocnameEngine.njsprojResolveAssemblyReference.cache
+C:\Users\Mourad\Documents\LocName\Engine\locnameenginegit\visual_studio\typescript_express\bin\Microsoft.NodejsTools.WebRole.dll
+E:\WORK\Locname Projects\LocName\locnameenginegit\visual_studio\typescript_express\obj\Debug\LocnameEngine.njsprojResolveAssemblyReference.cache
+E:\WORK\Locname Projects\LocName\locnameenginegit\visual_studio\typescript_express\bin\Microsoft.NodejsTools.WebRole.dll
+F:\work\locnameEngineDemo\locnameengine\visual_studio\typescript_express\obj\Debug\LocnameEngine.njsprojResolveAssemblyReference.cache
+F:\work\locnameEngineDemo\locnameengine\visual_studio\typescript_express\bin\Microsoft.NodejsTools.WebRole.dll

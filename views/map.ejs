@@ -1,0 +1,197 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Autocomplete - Default functionality</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+   
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=drawing&language=ar"></script>
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+  </script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/engineStyle.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ 
+<script>
+    var geocoder = new google.maps.Geocoder();
+    function initialize(lat, lng) {
+        var myLatlng = new google.maps.LatLng(lat, lng);
+  var mapOptions = {
+      center: myLatlng,
+      zoom: 14
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+    mapOptions);
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      draggable:true,
+      title: ''
+  });
+  google.maps.event.addListener(marker, 'dragend', function (event) {
+      $("#fields :input").each(function () {
+          $(this).val('');
+      });
+      document.getElementById("lat").value = event.latLng.lat();
+      document.getElementById("lng").value = event.latLng.lng();
+
+      geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+              if (results[0]) {
+                  $('#srch').val(results[0].formatted_address);
+                  for (var a in results[0].address_components) {
+                      if (results[0].address_components[a].types[0] == "street_number") {
+                          $('#building').val(results[0].address_components[a].long_name);
+                      }
+                      else if (results[0].address_components[a].types[0] == "route") {
+                          $('#street').val(results[0].address_components[a].long_name);
+                      }
+                      else if (results[0].address_components[a].types[0] == "country") {
+                          $('#country').val(results[0].address_components[a].long_name);
+                      }
+                      else if (results[0].address_components[a].types[0] == "locality") {
+                          $('#city').val(results[0].address_components[a].long_name);
+                      }
+                      else if (results[0].address_components[a].types[0] == "administrative_area_level_3") {
+                          $('#city').val(results[0].address_components[a].long_name);
+                      }
+                      else if (results[0].address_components[a].types[0] == "administrative_area_level_2") {
+                          $('#district').val(results[0].address_components[a].long_name);
+                      }
+                      else if (results[0].address_components[a].types[0] == "administrative_area_level_1") {
+                          $('#governorate').val(results[0].address_components[a].long_name);
+                      }
+                      else if (results[0].address_components[a].types[0] == "postal_code") {
+                          $('#zip').val(results[0].address_components[a].long_name);
+                      }
+                  }
+              }
+          }
+      });
+  });
+
+}
+
+  </script>
+
+
+  <script>
+     function findMyLocation() {
+          navigator.geolocation.getCurrentPosition(showP, showE);
+      }
+      function showP(position) {
+          initialize(position.coords.latitude, position.coords.longitude);
+          
+      }
+      function showE(error)
+      {
+          alert("We cannot find your location");
+      }
+$(function () {
+    var addresses = new Array();
+
+    var latlng = new Array();
+    var alldata = new Array();
+    var timeout;
+    var country, city, street, district;
+    $("#srch").autocomplete({
+        source: function (request, response) {
+            clearTimeout(timeout);
+            var address = $('#srch').val();
+            timeout = setTimeout(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/map/" + address,
+                    success: function (msg) {
+                        addresses = [];
+                        latlng = [];
+                        alldata = msg;
+                        for (var i in msg) {
+                            addresses.push(msg[i].description);
+                            latlng.push(msg[i].geometry.location);
+                        }
+                        response(addresses);
+                    }
+                });
+            },10);
+        },
+        select:function(event,ui)
+        {
+            var coords = [30,31];
+            var selecteddata = alldata[addresses.indexOf(ui.item.value)];
+            if (selecteddata && selecteddata.geometry)
+             coords = selecteddata.geometry.location.split(",");
+            initialize(coords[0], coords[1]);
+            $("#fields :input").each(function () {
+                $(this).val('');
+            });
+
+            $("#lat").val(coords[0]);
+            $("#lng").val(coords[1]);
+            if (selecteddata&&selecteddata.address_components) {
+                if (selecteddata.address_components.street_address) {
+                    $("#street").val(selecteddata.address_components.street_address);
+                }
+                if (selecteddata.address_components.country) {
+                    $("#country").val(selecteddata.address_components.country);
+                }
+                if (selecteddata.address_components.governorate) {
+                    $("#governorate").val(selecteddata.address_components.governorate);
+                }
+                if (selecteddata.address_components.city) {
+                    $("#city").val(selecteddata.address_components.city);
+                }
+                
+                if (selecteddata.address_components.district) {
+                    $("#district").val(selecteddata.address_components.district);
+                }
+                if (selecteddata.address_components.street_number) {
+                    $("#building").val(selecteddata.address_components.street_number);
+                }
+                if (selecteddata.address_components.postal_code) {
+                    $("#zip").val(selecteddata.address_components.postal_code);
+                }
+            }
+        }
+
+
+    });
+});
+</script>
+</head>
+<body>
+    <CENTER>
+        <div id="container" class="container">
+            <div class="head">
+                <h2>LOCNAME </h2><img src="/images/tlogo.png" style="float:right;" />
+            </div>
+            <div class="container-con" >
+                <div class="form">
+                    <button class="save" onclick="findMyLocation()">Find Me</button>
+                    <input class="text-input" id="srch" type="text"  placeholder="search"  >
+                    <div id="fields">
+                        <input class="text-input-small" id="building" type="text" placeholder=' Building No' />
+                        <input class="text-input-small" id="floor" type="text" placeholder=' Floor No' />
+                        <input class="text-input" id="street" type="text"  placeholder=' Street Name ' />
+                        <input class="text-input-small" id="district" type="text"  placeholder=' District' />
+                        <input class="text-input-small"  id="zip" type="text"  placeholder=' Zip code' />
+                        <input class="text-input" id="city" type="text" placeholder=' City ' />
+                        <input class="text-input" id="governorate" type="text"  placeholder=' Governorate ' />
+                        <input class="text-input" id="country" type="text"  placeholder=' Country ' />
+                        <input class="text-input-small" id="lat" type="text"  placeholder=' Latitude ' />
+                        <input class="text-input-small" id="lng" type="text" placeholder=' Longitude ' />
+                    </div>
+                    <button class="save">Save</button>
+                </div>
+                <div class="map">
+                    <div id="map-canvas" ></div>
+                </div>
+            </div>  
+        </div> 
+    </CENTER>
+</body>
+</html>
